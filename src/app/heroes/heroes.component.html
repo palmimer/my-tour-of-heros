@@ -1,13 +1,17 @@
 <h2>Heroes list</h2>
 <ul class="heroes">
-  <li *ngFor="let hero of heroes">
+  <li *ngFor="let hero of heroes" (click)="onSelect(hero)">
     <span class="badge">{{hero.id}} </span>{{hero.name}}
   </li>
 </ul>
-
-
-<!-- <div>
-  <label>name:
-    <input [(ngModel)]="hero.name" placeholder="name"/>
+<div *ngIf="selectedHero">
+  <label>
+    <input [(ngModel)]="selectedHero.name" placeholder="selected heroe's name"/>
   </label>
+</div>
+<!-- <div>
+  <h2 *ngIf="selectedHero">{{ selectedHero.name }}</h2>
 </div> -->
+
+
+
