@@ -5,6 +5,20 @@
     <label>name:
       <input [(ngModel)]="hero.name" placeholder="name"/>
     </label>
+    
   </div>
+    <button (click)="save()">save</button>
+    <button (click)="goBack()">go back</button>
+</div>
+<div *ngIf="!hero">
+  <h2>New hero</h2>
+  <div>Give him/her a name!</div>
+  <div>
+    <label>name:
+      <input #newName placeholder="name"/>
+    </label>
+    
+  </div>
+    <button (click)="saveNew(newName.value); newName.value=''">save</button>
     <button (click)="goBack()">go back</button>
 </div>

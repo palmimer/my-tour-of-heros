@@ -53,3 +53,29 @@
   margin-right: .8em;
   border-radius: 4px 0 0 4px;
 }
+button {
+  padding: 5px 10px;
+  margin-top: 10px;
+  display: inline-block;
+  background-color: #eee;
+  border-radius: 4px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+button:visited {
+  color: #334953;
+}
+button:hover {
+  color: #039be5;
+  background-color: #cfd8dc;
+}
+button.active {
+  color: #039be5;
+}
+button.delete {
+  position: relative;
+  left: 194px;
+  top: -46px;
+  background-color: gray !important;
+  color: #a20101;
+ 
+}

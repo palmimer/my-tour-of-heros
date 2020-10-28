@@ -31,4 +31,11 @@ export class HeroesComponent implements OnInit {
     .subscribe(heroes => this.heroes = heroes);
   }
 
+  delete(hero: Hero): void {
+    // törli a helyi listából
+    this.heroes= this.heroes.filter(h => h !== hero);
+    // és törli az adatbázisból
+    this.heroService.deleteHero(hero).subscribe();
+  }
+
 }

@@ -12,6 +12,7 @@ import { Hero } from '../hero';
 export class HeroDetailComponent implements OnInit {
 
   @Input() hero: Hero;
+  newHeroName: string;
 
   // The ActivatedRoute holds information about the route to this instance of the HeroDetailComponent.
   // This component is interested in the route's parameters extracted from the URL.
@@ -33,12 +34,27 @@ export class HeroDetailComponent implements OnInit {
     // The paramMap is a dictionary of route parameter values extracted from the URL. The "id" key returns the id of the hero to fetch.
     // Route parameters are always strings. The JavaScript (+) operator converts the string to a number.
     const id = +this.route.snapshot.paramMap.get('id');
-    this.heroService.getHero(id)
-    .subscribe(hero => this.hero = hero);
+    if(id != 0){
+      this.heroService.getHero(id)
+      .subscribe(hero => this.hero = hero);
+    }
+   
   }
 
   goBack(): void {
     this.location.back();
+  }
+
+  save(): void {
+    this.heroService.updateHero(this.hero)
+    .subscribe(() => this.goBack());
+  }
+
+  saveNew(newName: string): void {
+    newName = newName.trim();
+    if(!newName) { return; }
+    this.heroService.addHero({ id: null, name: newName } as Hero)
+    .subscribe(() => this.goBack());
   }
 
 }
